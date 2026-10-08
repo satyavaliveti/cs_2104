@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<!--
+  CS 2104 | WEEK 7 | GIT COMMANDS PRACTICE
+
+  TWO WAYS TO USE THIS FILE
+  1. Open it in a browser to read the guide and see HTML rendered.
+  2. Edit this source in VSCode to change the practice area.
+     Keep the working file in your cloned repository on rlogin.
+     A downloaded browser-preview copy is not your rlogin working copy.
+
+  CHECKPOINTS
+  1. Commit this starter unchanged: Add HTML practice template
+  2. EDIT the heading/intro: Personalize practice page introduction
+  3. ADD a list item: Add a third learning goal
+  4. DELETE the placeholder: Remove placeholder announcement
+  5. EXTEND with a linked HTML page OR an external CSS file.
+  Commit each checkpoint separately, then push after synchronizing.
+  Work individually in your own repository.
+
+  Search this source for PRACTICE: to find the editable locations.
+  Keep the reference guide; you do not need to edit or memorize every tag.
+  HTML comments explain the source but do not appear in the rendered page.
+  Do not put passwords, SSH keys, or private information in this file.
+-->
+<html lang="en">
+<!-- html is the root element. lang declares the document's language. -->
+<head>
+  <!-- head holds metadata, not the page's visible introductory header. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An instructional HTML template for a Git practice lab.">
+  <title>HTML and Git practice | Student name</title>
+
+  <!--
+    style contains CSS, not HTML. These optional rules make the guide readable.
+    You do not need to understand or change this block for checkpoints 1-4.
+    CSS comments use /* ... */ rather than HTML comment syntax.
+  -->
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-padding-top: 1rem; }
+    body { margin: 0; background: #f5f6f3; color: #203332; font: 1rem/1.65 system-ui, sans-serif; }
+    body > header, main, body > footer { width: min(100% - 2rem, 64rem); margin: 0 auto; }
+    body > header { padding: 3rem 0 1.5rem; border-bottom: 2px solid #cddbd5; }
+    .eyebrow { color: #346257; font-size: .8rem; font-weight: 700; letter-spacing: .12em; }
+    h1 { max-width: 22ch; margin: .5rem 0 1rem; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.12; }
+    h2 { margin: 0 0 1rem; font-size: 1.6rem; line-height: 1.25; }
+    h3 { margin: 1.3rem 0 .4rem; font-size: 1.15rem; }
+    p { margin: .6rem 0 1rem; }
+    a { color: #145f59; text-underline-offset: .18em; overflow-wrap: anywhere; }
+    a:hover { text-decoration-thickness: .15em; }
+    :focus-visible { outline: 3px solid #9a5b00; outline-offset: 4px; }
+    nav ul { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; padding: 0; list-style: none; }
+    main > section { margin: 2rem 0; }
+    .panel { border: 1px solid #ccd8d2; border-radius: .75rem; padding: clamp(1rem, 3vw, 2rem); background: white; }
+    .note { padding: .8rem 1rem; background: #edf5ef; border-left: .3rem solid #477767; }
+    .placeholder { padding: .7rem 1rem; background: #fff2dd; border: 1px dashed #986124; }
+    .muted, .source, figcaption { color: #526460; font-size: .9rem; }
+    code, kbd, samp { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .92em; }
+    code { background: #edf2ee; padding: .1rem .25rem; border-radius: .2rem; overflow-wrap: anywhere; }
+    pre { padding: 1rem; background: #edf2ee; border: 1px solid #d7e1da; border-radius: .4rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+    pre code { background: none; padding: 0; }
+    details { padding: .9rem 1.1rem; border: 1px solid #ccd8d2; border-radius: .5rem; background: white; margin: .75rem 0; }
+    summary { font-weight: 700; cursor: pointer; }
+    details[open] > summary { margin-bottom: 1rem; }
+    .tag-guide dt { margin-top: .75rem; font-weight: 700; }
+    .tag-guide dd { margin: .1rem 0 .6rem 1rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    caption { text-align: left; font-weight: 700; margin-bottom: .5rem; }
+    th, td { border: 1px solid #ccd8d2; padding: .65rem; text-align: left; vertical-align: top; }
+    thead, tfoot { background: #edf2ee; }
+    figure { margin: 1rem 0; }
+    img { display: block; max-width: 100%; height: auto; border-radius: .4rem; }
+    blockquote { margin: 1rem 0; padding-left: 1rem; border-left: .25rem solid #8dada0; }
+    fieldset { margin: 1rem 0; border: 1px solid #ccd8d2; border-radius: .4rem; }
+    legend { font-weight: 700; }
+    label { display: block; margin-top: .75rem; font-weight: 600; }
+    input, textarea, select, button { font: inherit; max-width: 100%; }
+    input:not([type="checkbox"]), textarea, select { width: 100%; padding: .45rem; border: 1px solid #81988e; border-radius: .25rem; }
+    label:has(input[type="checkbox"]) { font-weight: 400; }
+    button { padding: .5rem .8rem; margin: .75rem 0; }
+    body > footer { padding: 1rem 0 2rem; border-top: 1px solid #ccd8d2; }
+    .skip-link { position: absolute; left: -10000px; top: 0; padding: .75rem; background: white; }
+    .skip-link:focus { left: 1rem; z-index: 10; }
+    @media (max-width: 38rem) { th, td { padding: .45rem; } body > header { padding-top: 2rem; } }
+    @media print { body { background: white; } .skip-link, nav { display: none; } details { break-inside: avoid; } }
+  </style>
+  <!-- PRACTICE: EXTEND (CSS choice). Create styles.css before enabling this:
+  <link rel="stylesheet" href="styles.css">
+  -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- header introduces the page. h1 is its main heading. -->
+  <header>
+    <p class="eyebrow">CS 2104 / WEEK 7 / GIT COMMANDS PRACTICE</p>
+    <!-- PRACTICE: EDIT this h1 and the student-intro paragraph below. -->
+    <h1>My HTML and Git practice page</h1>
+    <p>Make a small change. Explain it clearly. Record it with Git.</p>
+    <!-- nav holds major navigation. Each #value points to a matching id. -->
+    <nav aria-label="On this page">
+      <ul>
+        <li><a href="#practice">Practice area</a></li>
+        <li><a href="#workflow">Git checkpoints</a></li>
+        <li><a href="#reference">HTML tag guide</a></li>
+        <li><a href="#extend">Extend the page</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <!-- PRACTICE: EXTEND (HTML choice). Add a link to your new about.html here. -->
+      </ul>
+    </nav>
+  </header>
+
+  <!-- main contains the page's primary content. Use one visible main. -->
+  <main id="main">
+    <!-- section groups content with a shared topic and a descriptive heading. -->
+    <section id="practice" class="panel">
+      <h2>01 / Your practice area</h2>
+      <p class="note"><strong>Start here:</strong> commit the unchanged template first.
+        Then make the edit, addition, deletion, and extension as separate commits.
+        The tag guide is a reference, not a requirement to use every tag.</p>
+
+      <!-- article is a self-contained item: here, a short student profile. -->
+      <article id="student-card">
+        <h3>About the author</h3>
+        <!-- PRACTICE: EDIT. Replace the sample text with a short introduction. -->
+        <p id="student-intro">My name is Student Name. I am learning how to use
+          Git to track changes and maintain my own project.</p>
+      </article>
+
+      <h3>My learning goals</h3>
+      <!-- ul is an unordered list. Each li is one item inside that list. -->
+      <ul id="learning-goals">
+        <li>Explain the difference between saving and committing.</li>
+        <li>Write commit messages that describe a specific change.</li>
+        <!-- PRACTICE: ADD one new li with another learning goal. -->
+      </ul>
+
+      <h3>Announcements</h3>
+      <p>Small, understandable changes are easier to review later.</p>
+      <!-- PRACTICE: DELETE the complete p element below, not this whole section. -->
+      <p id="remove-me" class="placeholder">Placeholder announcement:
+        remove this paragraph during the deletion checkpoint.</p>
+
+    </section>
+
+    <section id="workflow">
+      <h2>02 / Git checkpoints</h2>
+
+
+      <details>
+        <summary>The save, stage, commit, and push workflow</summary>
+        <p><strong>For each checkpoint:</strong> edit, save, and check the rendered page.
+          Then run the commands below, using a message that matches your actual change.</p>
+        <pre><code>git status
+git add practice.html
+git commit -m "Add a third learning goal"
+git push</code></pre>
+       <p><strong>Save frequently; commit at meaningful checkpoints.</strong> For this
+          assignment, stage(by adding), commit, and push each completed checkpoint. Do not commit every
+          keystroke or combine all five checkpoints into one final commit. In other
+          projects, one commit can include several related files. Pushing updates the
+          remote repository and is not required after every save.</p>
+        <p class="note"><strong>Stop on an error.</strong> If pulling or pushing fails,
+          read the message and ask for help. Do not force-push or delete
+          work to bypass the error.</p>
+        <p class="source">References:
+          <a href="https://git-scm.com/docs/git-add">git add</a>,
+          <a href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository">recording changes</a>,
+          <a href="https://git-scm.com/docs/git-pull">git pull</a>, and
+          <a href="https://git-scm.com/docs/git-push">git push</a>.</p>
+      </details>
+
+      <details>
+        <summary>Commit-message language and length</summary>
+        <p>Use professional, specific language. Begin with an imperative verb:
+          <code>Add</code>, <code>Fix</code>, <code>Update</code>, <code>Remove</code>, or
+          <code>Clarify</code>. Describe the change, not the fact that you worked.</p>
+        <p>Aim for a subject of about <strong>50 characters or fewer</strong>, including
+          spaces. This is a readability target, not a Git-enforced limit. For this assignment,
+          capitalize the first word and omit a final period. Avoid vague messages such
+          as <code>stuff</code>, <code>changes</code>, <code>done</code>, or <code>fixed it</code>.</p>
+        <p>One subject line is usually enough here. When an explanation is useful, add a
+          blank line and a short body explaining why; wrap body lines at about 72 characters.</p>
+        <pre><code>Clarify the staging explanation
+
+Explain that edits made after git add need to be staged again.</code></pre>
+        <p class="source">Reference:
+          <a href="https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project">Pro Git: commit guidelines</a>.
+          Capitalization and punctuation are the suggested class style.</p>
+      </details>
+
+            <table>
+        <caption>Make one separate commit for each checkpoint</caption>
+        <thead><tr><th scope="col">Change</th><th scope="col">Example commit message</th></tr></thead>
+        <tbody>
+          <tr><td>1. Add this unchanged file</td><td><code>Add HTML practice template</code></td></tr>
+          <tr><td>2. Personalize the heading and introduction</td><td><code>Personalize practice page introduction</code></td></tr>
+          <tr><td>3. Add one learning goal</td><td><code>Add a third learning goal</code></td></tr>
+          <tr><td>4. Delete the placeholder announcement</td><td><code>Remove placeholder announcement</code></td></tr>
+          <tr><td>5. Add a linked page OR a stylesheet</td><td><code>Add and link an about page</code><br>OR <code>Add external stylesheet</code></td></tr>
+        </tbody>
+      </table>
+      
+    </section>
+
+    <section id="reference">
+      <h2>03 / Core HTML tag guide</h2>
+      <p>HTML describes content and structure; CSS controls presentation. Expand a group
+        to see common elements and examples. This is a beginner-focused selection,
+        not every element in the HTML standard. Tables, forms, and media are optional
+        exploration for this Git assignment.</p>
+
+      <details open>
+        <summary>Start with tags, attributes, nesting, and comments</summary>
+        <p>An <strong>element</strong> commonly includes an opening tag, content, and a
+          closing tag. An <strong>attribute</strong> supplies information in the opening tag.</p>
+        <pre><code>&lt;p id="intro" class="note"&gt;Learn &lt;strong&gt;one thing&lt;/strong&gt; at a time.&lt;/p&gt;
+&lt;!-- This comment is visible in the source, not in the rendered page. --&gt;</code></pre>
+        <p><code>id</code> identifies one element and must be unique in the document;
+          <code>class</code> is a reusable label for styling or scripting. Attribute values
+          are quoted in this template. Close nested elements in reverse order.</p>
+        <p><strong>Void elements</strong>, including <code>&lt;meta&gt;</code>,
+          <code>&lt;link&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>,
+          <code>&lt;hr&gt;</code>, and <code>&lt;input&gt;</code>, do not have closing tags.</p>
+        <p>To display markup as text, escape characters: write <code>&amp;lt;</code> for
+          <code>&lt;</code>, <code>&amp;gt;</code> for <code>&gt;</code>, and
+          <code>&amp;amp;</code> for <code>&amp;</code>. Indent nested elements consistently;
+          indentation alone does not create visible spacing in a normal paragraph.</p>
+        <p class="source">Reference:
+          <a href="https://html.spec.whatwg.org/multipage/syntax.html">HTML Standard: syntax</a>.</p>
+      </details>
+
+      <details>
+        <summary>Document setup: the outer structure</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;!DOCTYPE html&gt;</code></dt>
+          <dd>The document-type declaration selects standards-mode rendering; it is not an HTML element.</dd>
+          <dt><code>&lt;html&gt;</code></dt>
+          <dd>The root element enclosing the document. Set its <code>lang</code> attribute.</dd>
+          <dt><code>&lt;head&gt;</code></dt>
+          <dd>Metadata and resource information. This is different from the visible <code>&lt;header&gt;</code>.</dd>
+          <dt><code>&lt;meta&gt;</code></dt>
+          <dd>Metadata such as character encoding; this page also declares a mobile viewport.</dd>
+          <dt><code>&lt;title&gt;</code></dt>
+          <dd>The document title shown in the browser tab, not the visible page heading.</dd>
+          <dt><code>&lt;body&gt;</code></dt>
+          <dd>The document content, including headings, paragraphs, links, and other elements.</dd>
+          <dt><code>&lt;style&gt;</code></dt>
+          <dd>CSS rules embedded in the HTML document.</dd>
+          <dt><code>&lt;link&gt;</code></dt>
+          <dd>A relationship to another resource; <code>rel="stylesheet"</code> loads an external CSS file.</dd>
+        </dl>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;My page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My page&lt;/h1&gt;
+    &lt;p&gt;A complete, small HTML document.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p class="source">Reference: <a href="https://html.spec.whatwg.org/multipage/semantics.html">HTML Standard: document and metadata</a>.</p>
+      </details>
+      <details>
+        <summary>Headings, semantic sections, and containers</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;h1&gt;</code> / <code>&lt;h2&gt;</code> / <code>&lt;h3&gt;</code> / <code>&lt;h4&gt;</code> / <code>&lt;h5&gt;</code> / <code>&lt;h6&gt;</code></dt>
+          <dd>Six heading levels, highest to lowest. For this page, use one main <code>h1</code>, then logical subheadings.</dd>
+          <dt><code>&lt;header&gt;</code></dt>
+          <dd>Introductory content for the page or a section.</dd>
+          <dt><code>&lt;nav&gt;</code></dt>
+          <dd>A major group of navigation links.</dd>
+          <dt><code>&lt;main&gt;</code></dt>
+          <dd>The primary page content. Use one visible <code>main</code>.</dd>
+          <dt><code>&lt;section&gt;</code></dt>
+          <dd>A themed section, usually with a heading.</dd>
+          <dt><code>&lt;article&gt;</code></dt>
+          <dd>A self-contained composition, such as a post or profile.</dd>
+          <dt><code>&lt;aside&gt;</code></dt>
+          <dd>Related but secondary content, such as a supporting note.</dd>
+          <dt><code>&lt;footer&gt;</code></dt>
+          <dd>Footer information for the page or a section.</dd>
+          <dt><code>&lt;address&gt;</code></dt>
+          <dd>Contact information for the relevant page or article author; not a general-purpose address formatter.</dd>
+          <dt><code>&lt;div&gt;</code></dt>
+          <dd>A generic container for flow content when no more meaningful element fits.</dd>
+          <dt><code>&lt;span&gt;</code></dt>
+          <dd>A generic container within text, without adding meaning by itself.</dd>
+        </dl>
+        <p>Choose headings by their position in the outline, not their default size.
+          Use CSS for appearance. A semantic element explains a role; a generic
+          <code>div</code> or <code>span</code> does not.</p>
+        <aside class="note"><strong>Rendered aside:</strong> the editable profile above is
+          an <code>article</code>; this supporting note is an <code>aside</code>.</aside>
+        <p class="source">Reference: <a href="https://html.spec.whatwg.org/multipage/sections.html">HTML Standard: sections</a>.</p>
+      </details>
+      <details>
+        <summary>Paragraphs, emphasis, and small text</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;p&gt;</code></dt>
+          <dd>A paragraph. Start a new paragraph with another <code>p</code> element.</dd>
+          <dt><code>&lt;strong&gt;</code></dt>
+          <dd>Strong importance, seriousness, or urgency; not merely a request for bold text.</dd>
+          <dt><code>&lt;em&gt;</code></dt>
+          <dd>Stress emphasis; not merely a request for italics.</dd>
+          <dt><code>&lt;b&gt;</code> / <code>&lt;i&gt;</code></dt>
+          <dd><code>b</code> draws attention without added importance; <code>i</code> marks an alternate voice or term. Use CSS for purely visual styling.</dd>
+          <dt><code>&lt;mark&gt;</code></dt>
+          <dd>Text highlighted because it is relevant in the current context.</dd>
+          <dt><code>&lt;small&gt;</code></dt>
+          <dd>Side comments or small print, not a general tool for shrinking text.</dd>
+          <dt><code>&lt;sub&gt;</code> / <code>&lt;sup&gt;</code></dt>
+          <dd>Subscript and superscript, such as a chemical formula or exponent.</dd>
+          <dt><code>&lt;br&gt;</code></dt>
+          <dd>A meaningful line break, such as a line in an address or poem. Not a spacing tool.</dd>
+          <dt><code>&lt;hr&gt;</code></dt>
+          <dd>A thematic break between topics; not just a decorative line.</dd>
+        </dl>
+        <p>  <strong>Important:</strong> Save your file before making additional changes. 
+          Make <em>one meaningful improvement</em> and commit it with a clear message. 
+          For example, you might document a chemical formula such as H<sub>2</sub>O, 
+          write a mathematical expression such as x<sup>2</sup>, or use 
+          <mark>highlighted text</mark> to draw attention to information that is
+          especially relevant in the current context.</p>
+
+        <p><strong>Important:</strong> save your file. Commit <em>one meaningful change</em>.
+          This is <mark>highlighted text</mark>. Examples: H<sub>2</sub>O and x<sup>2</sup>.</p>
+        <p><small>Example side note: the appearance of these elements can be changed with CSS.</small></p>
+        <p class="source">Reference: <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html">HTML Standard: text-level semantics</a>.</p>
+      </details>
+      <details>
+        <summary>Quotations, code, abbreviations, dates, and edits</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;blockquote&gt;</code> / <code>&lt;q&gt;</code></dt>
+          <dd>A longer quotation and a short inline quotation, respectively.</dd>
+          <dt><code>&lt;cite&gt;</code></dt>
+          <dd>The title of a work being referenced, not the name of its author.</dd>
+          <dt><code>&lt;pre&gt;</code> / <code>&lt;code&gt;</code></dt>
+          <dd><code>pre</code> preserves whitespace; <code>code</code> marks computer code. Combine them for code blocks.</dd>
+          <dt><code>&lt;kbd&gt;</code> / <code>&lt;samp&gt;</code> / <code>&lt;var&gt;</code></dt>
+          <dd>User input, example program output, and a variable, respectively.</dd>
+          <dt><code>&lt;abbr&gt;</code></dt>
+          <dd>An abbreviation. Expand unfamiliar abbreviations in visible text, not only in a tooltip.</dd>
+          <dt><code>&lt;time&gt;</code></dt>
+          <dd>A date or time; <code>datetime</code> can provide a machine-readable value.</dd>
+          <dt><code>&lt;del&gt;</code> / <code>&lt;ins&gt;</code></dt>
+          <dd>Deleted and inserted document text. These elements do not create Git commits.</dd>
+        </dl>
+        <p>HyperText Markup Language (<abbr title="HyperText Markup Language">HTML</abbr>)
+          describes the structure of this page.</p>
+        <p>Type <kbd>git status</kbd>. Example output: <samp>nothing to commit, working tree clean</samp>.</p>
+        <p>Sample date: <time datetime="2026-09-23">September 23, 2026</time>.</p>
+        <blockquote><p>Make one useful change at a time.</p></blockquote>
+        <p>The sentence above is an original demonstration quotation, not an external quote.</p>
+        <p>Example revision: <del>Commit everything at the end.</del>
+          <ins>Commit each completed checkpoint.</ins></p>
+        <p class="source">Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">MDN: HTML elements</a>.</p>
+      </details>
+      <details>
+        <summary>Lists: unordered, ordered, and descriptive</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;ul&gt;</code></dt>
+          <dd>An unordered list when item order is not significant.</dd>
+          <dt><code>&lt;ol&gt;</code></dt>
+          <dd>An ordered list for steps or rankings.</dd>
+          <dt><code>&lt;li&gt;</code></dt>
+          <dd>One item inside a <code>ul</code> or <code>ol</code>.</dd>
+          <dt><code>&lt;dl&gt;</code></dt>
+          <dd>A description list that groups terms with explanations.</dd>
+          <dt><code>&lt;dt&gt;</code> / <code>&lt;dd&gt;</code></dt>
+          <dd>A term and its description inside a <code>dl</code>. This tag guide uses them.</dd>
+        </dl>
+        <pre><code>&lt;ol&gt;
+  &lt;li&gt;Save the file.&lt;/li&gt;
+  &lt;li&gt;Stage the change.&lt;/li&gt;
+  &lt;li&gt;Commit the checkpoint.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Repository&lt;/dt&gt;
+  &lt;dd&gt;A project with version history.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        <p>Put a nested list inside the relevant parent <code>li</code>, not beside it.</p>
+        <p class="source">Reference: <a href="https://html.spec.whatwg.org/multipage/grouping-content.html">HTML Standard: grouping content</a>.</p>
+      </details>
+      <details>
+        <summary>Links, images, and captions</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;a&gt;</code></dt>
+          <dd>A hyperlink when it has <code>href</code>. Use link text that explains the destination.</dd>
+          <dt><code>&lt;img&gt;</code></dt>
+          <dd>An image: <code>src</code> locates it, and <code>alt</code> supplies a text alternative.</dd>
+          <dt><code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code></dt>
+          <dd>Self-contained content and its optional caption. A caption does not automatically replace image alt text.</dd>
+        </dl>
+        <pre><code>&lt;a href="#practice"&gt;Return to the practice area&lt;/a&gt;
+&lt;a href="about.html"&gt;About this project&lt;/a&gt;
+&lt;img src="workspace.jpg" alt="A laptop and notebook on a desk"&gt;</code></pre>
+        <p>The first link works now. The other examples require files you create.
+          Relative paths are resolved from the current document's location.
+          When adding an image file, stage it along with the HTML that uses it.</p>
+        <figure>
+          <!-- Embedded image data keeps this starter self-contained and usable offline.
+               For your own image, replace src with a relative file path and update alt. -->
+          <img width="640" height="120"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='120'%3E%3Crect width='640' height='120' fill='%23dfeee6'/%3E%3Ctext x='320' y='69' text-anchor='middle' font-family='sans-serif' font-size='25' fill='%23203332'%3ESave. Review. Stage. Commit.%3C/text%3E%3C/svg%3E"
+            alt="Save. Review. Stage. Commit.">
+          <figcaption>A working image example embedded directly in this file.</figcaption>
+        </figure>
+        <p>Describe an informative image's meaning in its context. Use
+          <code>alt=""</code> for a purely decorative image. Avoid vague text such as
+          <code>alt="image"</code>.</p>
+        <p class="source">Accessibility reference:
+          <a href="https://www.w3.org/WAI/tutorials/images/decision-tree/">W3C: choosing image alternatives</a>.</p>
+        <p class="source">Reference: <a href="https://html.spec.whatwg.org/multipage/embedded-content.html">HTML Standard: embedded content</a>.</p>
+      </details>
+      <details>
+        <summary>Tables: data, not page layout</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;table&gt;</code> / <code>&lt;caption&gt;</code></dt>
+          <dd>A data table and its descriptive title.</dd>
+          <dt><code>&lt;thead&gt;</code> / <code>&lt;tbody&gt;</code> / <code>&lt;tfoot&gt;</code></dt>
+          <dd>Groups for header rows, data rows, and optional summary rows.</dd>
+          <dt><code>&lt;tr&gt;</code></dt>
+          <dd>One table row.</dd>
+          <dt><code>&lt;th&gt;</code></dt>
+          <dd>A header cell. <code>scope="col"</code> or <code>scope="row"</code> identifies the header direction.</dd>
+          <dt><code>&lt;td&gt;</code></dt>
+          <dd>A data cell.</dd>
+        </dl>
+        <!-- caption comes first; rows contain cells; scope connects simple headers to data. -->
+        <table>
+          <caption>Sample files in a small project</caption>
+          <thead><tr><th scope="col">File type</th><th scope="col">Count</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">HTML</th><td>2</td></tr>
+            <tr><th scope="row">CSS</th><td>1</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">Total</th><td>3</td></tr></tfoot>
+        </table>
+        <p>View this table's source to see the complete nesting. Use CSS, not tables,
+          to arrange the general layout of a page.</p>
+        <p class="source">Reference: <a href="https://html.spec.whatwg.org/multipage/tables.html">HTML Standard: tables</a>.</p>
+      </details>
+      <details>
+        <summary>Forms: labeled controls and buttons</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;form&gt;</code></dt>
+          <dd>Groups controls for data entry. <code>action</code> is the submission destination; <code>method</code> is the submission method.</dd>
+          <dt><code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code></dt>
+          <dd>A group of related controls and its title.</dd>
+          <dt><code>&lt;label&gt;</code></dt>
+          <dd>A control label. Match <code>for</code> to the control's unique <code>id</code>.</dd>
+          <dt><code>&lt;input&gt;</code></dt>
+          <dd>A control whose <code>type</code> selects text, email, checkbox, or another input kind.</dd>
+          <dt><code>&lt;textarea&gt;</code></dt>
+          <dd>A multiline text field; it needs a closing tag.</dd>
+          <dt><code>&lt;select&gt;</code> / <code>&lt;option&gt;</code></dt>
+          <dd>A selection control and its choices.</dd>
+          <dt><code>&lt;button&gt;</code></dt>
+          <dd>A button. Specify <code>type="submit"</code> to submit or <code>type="button"</code> for a non-submitting action.</dd>
+        </dl>
+        <p id="form-note">Practice controls only: enter sample text, not personal data.
+          Submission is disabled because this template has no processing service.</p>
+        <!-- disabled on the submit button prevents submission, including implicit submission.
+             name identifies a field in submitted data; id connects it to its label.
+             required is a boolean attribute: its presence enables the requirement. -->
+        <form action="#" method="get" aria-describedby="form-note">
+          <fieldset>
+            <legend>Practice feedback</legend>
+            <label for="topic">Sample topic (required)</label>
+            <input type="text" id="topic" name="topic" required>
+            <label for="tag-choice">A tag to explore</label>
+            <select id="tag-choice" name="tag">
+              <option value="p">p: paragraph</option>
+              <option value="a">a: link</option>
+              <option value="ul">ul: unordered list</option>
+            </select>
+            <label for="feedback">Sample feedback</label>
+            <textarea id="feedback" name="feedback" rows="3"></textarea>
+            <label for="reviewed"><input type="checkbox" id="reviewed" name="reviewed" value="yes">
+              I reviewed the example.</label>
+            <button type="submit" disabled>Submit unavailable in this demo</button>
+          </fieldset>
+        </form>
+        <p>A placeholder is not a substitute for a visible label. HTML can provide
+          controls and basic validation, but does not by itself implement a service
+          that processes or stores submissions.</p>
+        <p class="source">Accessibility reference:
+          <a href="https://www.w3.org/WAI/tutorials/forms/labels/">W3C: labeling controls</a>.</p>
+        <p class="source">Reference: <a href="https://html.spec.whatwg.org/multipage/forms.html">HTML Standard: forms</a>.</p>
+      </details>
+      <details>
+        <summary>Expandable content: interaction without JavaScript</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;details&gt;</code></dt>
+          <dd>A disclosure widget whose contents can be expanded or collapsed. Add <code>open</code> to start expanded.</dd>
+          <dt><code>&lt;summary&gt;</code></dt>
+          <dd>The visible label that toggles its parent <code>details</code>; put it first inside that element.</dd>
+        </dl>
+        <pre><code>&lt;details&gt;
+  &lt;summary&gt;Show an example&lt;/summary&gt;
+  &lt;p&gt;This text appears when the reader expands the widget.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+        <p>This guide uses <code>details</code> and <code>summary</code> for every expandable
+          group. Use the keyboard to focus a summary, then press Enter or Space.</p>
+        <p class="source">Reference: <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html">HTML Standard: interactive elements</a>.</p>
+      </details>
+      <details>
+        <summary>Optional next steps: media and scripts</summary>
+        <dl class="tag-guide">
+          <dt><code>&lt;audio&gt;</code> / <code>&lt;video&gt;</code></dt>
+          <dd>Audio and video players. Add <code>controls</code> for playback controls.</dd>
+          <dt><code>&lt;source&gt;</code></dt>
+          <dd>An alternative media resource inside <code>audio</code>, <code>video</code>, or <code>picture</code>.</dd>
+          <dt><code>&lt;track&gt;</code></dt>
+          <dd>Timed text such as video captions; it refers to a separate text-track file.</dd>
+          <dt><code>&lt;picture&gt;</code></dt>
+          <dd>Image-source choices plus a required fallback <code>img</code>.</dd>
+          <dt><code>&lt;iframe&gt;</code></dt>
+          <dd>An embedded document. Give it a descriptive <code>title</code> and embed only trusted content.</dd>
+          <dt><code>&lt;script&gt;</code></dt>
+          <dd>Embedded or linked executable code or data, commonly JavaScript. Not needed for this lab.</dd>
+          <dt><code>&lt;noscript&gt;</code></dt>
+          <dd>Fallback content when scripting is unavailable or disabled, depending on context.</dd>
+        </dl>
+        <p>Media examples need real media files and appropriate alternatives, such as
+          captions or transcripts. They are not required for this Git exercise.
+          Do not add nonexistent file paths just to use more tags.</p>
+        <pre><code>&lt;!-- Example only: this requires an actual script.js file. --&gt;
+&lt;script src="script.js" defer&gt;&lt;/script&gt;</code></pre>
+        <p class="source">Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">MDN: HTML elements</a>.</p>
+      </details>
+    </section>
+
+    <section id="extend" class="panel">
+      <h2>04 / Extend the page</h2>
+      <p>Choose one extension. Make the new file and the HTML change that uses it part
+        of the <strong>same commit</strong> so the checkpoint is complete.</p>
+      <details>
+        <summary>Choice A: create and link about.html</summary>
+        <p>Create <code>about.html</code> beside <code>practice.html</code>. Use the small
+          document skeleton in the tag guide, give it an appropriate title, and add a
+          heading and one paragraph about what you learned.</p>
+        <p>Add this list item inside the navigation list near the top of
+          <code>practice.html</code>, then check that the link works:</p>
+        <pre><code>&lt;li&gt;&lt;a href="about.html"&gt;About this project&lt;/a&gt;&lt;/li&gt;</code></pre>
+        <p>Add a return link inside <code>about.html</code>:</p>
+        <pre><code>&lt;a href="practice.html"&gt;Return to the practice page&lt;/a&gt;</code></pre>
+        <p>Save both files, then stage and review them together:</p>
+        <pre><code>git add practice.html about.html
+git diff --staged
+git commit -m "Add and link an about page"</code></pre>
+        <p>Synchronize and push using the workflow above.</p>
+      </details>
+      <details>
+        <summary>Choice B: create and link styles.css</summary>
+        <p>Create <code>styles.css</code> beside <code>practice.html</code>. For example:</p>
+        <pre><code>/* This file contains CSS rules, not HTML tags. */
+#practice {
+  border-left: 0.4rem solid teal;
+}</code></pre>
+        <p>Uncomment the prepared <code>link</code> element after the <code>style</code>
+          block in this document's <code>head</code>:</p>
+        <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+        <p>Save both files, check the visible change, and stage them together:</p>
+        <pre><code>git add practice.html styles.css
+git diff --staged
+git commit -m "Add external stylesheet"</code></pre>
+        <p>Synchronize and push using the workflow above.</p>
+      </details>
+    </section>
+
+    <section id="resources">
+      <h2>05 / Keep learning</h2>
+      <p>This guide covers commonly used elements, not the complete language.
+        Each reference group links to supporting documentation. For a full lookup,
+        use the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">MDN HTML elements reference</a>
+        or the <a href="https://html.spec.whatwg.org/multipage/">HTML Living Standard</a>.</p>
+      <p>Before committing, check that your page still loads, headings remain logical,
+        links point to real destinations, images have suitable alternatives, and only
+        the intended changes are staged. Keep instructional comments when they are useful.</p>
+      <p class="note"><strong>Keep the purpose in view:</strong> a clear Git history and
+        useful commit messages matter more here than a complicated web page.</p>
+    </section>
+  </main>
+
+  <!-- footer supplies closing information for this page. -->
+  <footer>
+    <p><small>Instructional starter for Git practice. All examples are demonstration content.</small></p>
+    <p><a href="#practice">Back to the practice area</a></p>
+  </footer>
+</body>
+</html>
